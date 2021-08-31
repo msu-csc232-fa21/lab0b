@@ -1,51 +1,22 @@
-# HW02 - Slay the Lernaean Hydra
+# Lab02 - Compiling C++ Programs
 
-Driven mad by CSC131, the Student smashed their laptop.
+Today's lab is the second (and last) of our non-graded labs. Today we focus on the tools needed to build various targets with our source code. To drive this experience, the student is asked to write three different recursive functions that were discussed in class.
 
-After recovering their sanity, the Student deeply regretted their actions; they were purified by Chair of the CS Department, then traveled to Cheek 209 to inquire how they could atone for their actions. The Executive Assistant and Oracle of Delphi, advised them to go to Cheek 61M and serve its occupant, Jim Daehn, for one semester, performing whatever labors Jim might set upon them; in return, they would be rewarded with immortality, or at least forward movement in their curriculum.
+## Recursion: Processing Arrays
 
-The Student despaired at this, loathing to serve a man whom they knew to be far inferior to themselves, yet fearing to oppose the Chair. Eventually, they placed themselves at Jim's disposal.
+In chapter 2, section 2.4, we are introduced to various techniques for processing arrays using recursion. Specifically, we looked at:
 
-Jim originally ordered the Student to perform ten labors. The Student accomplished these tasks, but Jim refused to recognize two: the slaying of the [Lernaean Hydra](https://en.wikipedia.org/wiki/Labours_of_Hercules#Second:_Lernaean_Hydra), as the Students' GA had helped them; and the cleansing of the [Augeas](https://en.wikipedia.org/wiki/Labours_of_Hercules#Fifth:_Augean_stables), because the Student accepted payment for the labor.
-
-Jim set two more tasks (fetching the [Golden Apples of Hesperides](https://en.wikipedia.org/wiki/Labours_of_Hercules#Eleventh:_Golden_Apples_of_the_Hesperides) and capturing [Cerberus](https://en.wikipedia.org/wiki/Labours_of_Hercules#Twelfth:_Cerberus)), which the Student also performed, bringing the total number of tasks to twelve.
-
-Having slain the Nemean Lion, the Student is now prepared to [Slay the Lernaean Hydra](https://en.wikipedia.org/wiki/Labours_of_Hercules#Second:_Lernaean_Hydra)...
-
-<p><a href="https://commons.wikimedia.org/wiki/File:Gustave_Moreau_003.jpg#/media/File:Gustave_Moreau_003.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Gustave_Moreau_003.jpg" alt="Gustave Moreau 003.jpg" height="480" width="410"></a></p>
-
-## Recursion: Ackermann's Function
-
-_Note: This assignment is related to the Exercise 26 of Chapter 2 found in **Data Abstraction and Problem-Solving with C++**, seventh edition, by Carrano & Henry. See [our disclaimer below](#disclaimer--fair-use-statement)._
-
-This assignment is primarily meant to give the student experience in writing a recursive function. This effort, of course, entails a thorough examination of the four fundamentals questions for constructing recursive solutions:
-
-1. How can you define the problem in terms of a smaller problem of the same type?
-2. How does each recursive call diminish the size of the problem?
-3. What instance of the problem can serve as the base case?
-4. As the problem size diminishes, will you reach this base case?
+* Writing an Array's Entries in Backward Order
+* Writing a recursive function that computes and returns the product of the first n >= 1 real numbers in an array
+* Writing a recursive function that computes and returns the product of the double values in the array `anArray[first..last]`
 
 ## Objectives
 
 In this assignment you
 
-* implement a solution to Ackermann's Function
-* modify an existing file under revision control
-* continue to learn basic git commands for staging changes, committing changes and pushing them to GitHub
-* continue to learn how to assemble a pull request for review by your instructor and graduate assistants
-
-Upon successful completion of this assignment, the student will implement the following problem:
-
-> Consider the following recursive definition:
-```
-              { n + 1, if m = 0
-Acker(m, n) = { Acker(m - 1, 1) if n = 0
-              { Acker(m - 1, Acker(m, n - 1)) otherwise
-```
-
-This function, called _Ackermann's function_, is of interest because it grows rapidly with respect to the sizes of _m_ and _n_. To get a sense of how this function operates, try computing the following by hand first: `Acker(1, 2)`.
-
-Caution: Even for modest values of _m_ and _n_, Ackermann's function requires _many_ recursive calls.
+* discover (and possibly install) tools used for developing and executing C++ programs
+* gain experience developing recursive functions
+* gain additional experience submitting assignments without penalty
 
 ## Background Reading
 
@@ -63,11 +34,11 @@ This assignment simply covers the concept of a recursive function. As mentioned 
 
 ### Namespaces
 
-The Ackermann function is to be implemented as part of the `csc232` namespace. Making a function definition a part of a namespace is as simple as implementing said function _within_ the given namespace. You'll find a `TODO` statement in [include/csc232.h](include/csc232.h) that explicitly has you writing your function definition within the proper namespace. **It is imperative that your function is defined within this namespace! The Catch2 unit tests rely on this organization**.
+The functions you will write in this lab are to be implemented as part of the `csc232` namespace. Making a function definition a part of a namespace is as simple as implementing said function _within_ the given namespace. You'll find a `TODO` statement in [include/csc232.h](include/csc232.h) that explicitly has you writing your function definitions within the proper namespace. **It is imperative that your functions are defined within this namespace! The Catch2 unit tests rely on this organization**.
 
 ## Getting Started
 
-After accepting this assignment with the provided [GitHub Classroom Assignment link](https://classroom.github.com/a/3IULbojN), clone this repository. Once cloned, create a new branch named `develop` within which to do your work. Ultimately, you will create a pull request that seeks to merge your `develop` branch into your `trunk` branch.
+After accepting this assignment with the provided [GitHub Classroom Assignment link](https://classroom.github.com/a/WyKrW_H8), clone this repository. Once cloned, create a new branch named `develop` within which to do your work. Ultimately, you will create a pull request that seeks to merge your `develop` branch into your `trunk` branch.
 
 To create your new branch and push it to GitHub, issue the following `git` commands:
 
@@ -96,11 +67,12 @@ Don't forget the trailing period `.` for it specifies to code that you want to o
 
 ## Tasks
 
-This assignment requires three basic tasks:
+This assignment requires four basic tasks:
 
-1. Modify `csc232.h` so that it implements the `acker()` function. See the `TODO` statement indicating _where_ within this file your function definition should be written.
-2. Document the `acker()` function accordingly
-3. Delete the line containing the `TODO` statement.
+1. Modify `csc232.h` so that it implements the `writeArrayBackward()` function (see Question 4 of Chapter 2 in your textbook, section 2.4.1). See the `TODO` statement indicating _where_ within this file your function definition should be written. Be sure the function is properly documented using javadoc-style Doxygen comments.
+2. Modify `csc232.h` so that it implements the `computeProduct()` function (see Question 5 of Chapter 2 in your textbook, section 2.4.1). See the `TODO` statement indicating _where_ within this file your function definition should be written. Be sure the function is properly documented using javadoc-style Doxygen comments.
+3. Modify `csc232.h` so that it implements the `computeProduct()` function (see Question 7 of Chapter 2 in your textbook, section 2.4.1). See the `TODO` statement indicating _where_ within this file your function definition should be written. Be sure the function is properly documented using javadoc-style Doxygen comments.
+4. Delete the line containing the `TODO` statement.
 
 Before you begin, be sure you have thoroughly read through, and understand Chapter 2 and the concept of recursion.
 
@@ -112,34 +84,42 @@ Additional preliminary steps you may want to take:
 2. Study the [CMakeLists.txt](CMakeLists.txt) file. What do you suppose is the purpose of this file? _Don't worry too much if you don't understand this file; we will discuss it and how its used by a program named `cmake`.
 3. Jot down anything that you don't understand.
 
-### Part 1: Implement the Ackermann Function
+### Part 1: Writing an Array's Entries Backwards
 
-In Part 1 of this assignment you will implement the `Acker` function.
+In Part 1 of this assignment you will implement the `writeArrayBackward` function.
 
 1. In the [include](include) folder, modify the file named `csc232.h`.
-2. When implementing your function, make sure of the following:
-   1. You are writing your code within the indicated `csc232` namespace
-   2. You name the function `acker` (note that each letter in the name is lowercase)
-   3. The parameter list contains exactly two parameters of type `int`
-   4. The return value of the `acker` function is of type `int`
-3. When documenting your function, be sure it includes the following tags (with appropriate values):
-   1. `@brief`
-   2. `@param`
-   3. `@pre`
-   4. `@post`
-   5. `@return`
+2. When implementing your function, make sure of that you are using the exact identifiers shown in the example code of section 2.4.1 in your textbook. Don't forget to include documentation comments.
+3. To test your work, toggle the `PART_1_COMPLETE` macro to `TRUE` (in the `lab-macros.h` header file) and execute the `lab02-test` target.
+4. Upon completion of this step, stage, commit and push your changes to GitHub.
 
-#### Implementation Notes
+### Part 2: Computing the product of the first n real numbers in an array
 
-Be sure to thoroughly comment your code. Use the `javadoc`-style Doxygen comments to provide a brief description of the function, its parameters, return values and pre and post conditions.
+In Part 2 of this assignment you will implement the `computeProduct` function prescribed in Question 5, section 2.4.1 of your textbook.
 
-After you have modoified this file, add it to revision control, commit your changes and push the commit to GitHub using the following `git` commands (the output, where it occurred, has been ommitted for clarity).
+1. In the [include](include) folder, modify the file named `csc232.h` by adding the definition of `computeProduct`.
+2. When implementing your function, make sure of that you are using the following function signature (exactly):
 
-```bash
-git add include/csc232.h
-git commit -m"HW02 - Initial import of Ackermann function."
-git push
-```
+   ```c++
+   double computeProduct(const double anArray[], int n)
+   ```
+
+3. To test your work, toggle the `PART_2_COMPLETE` macro to `TRUE` (in the `lab-macros.h` header file) and execute the `lab02-test` target.
+4. Upon completion of this step, stage, commit and push your changes to GitHub.
+
+### Part 3: Computing the product of the doubles in the array `anArray[first..last]`
+
+In Part 3 of this assignment you will implement the `computeProduct` function prescribed in Question 7, section 2.4.1 of your textbook.
+
+1. In the [include](include) folder, modify the file named `csc232.h` by adding the definition of `computeProduct`.
+2. When implementing your function, make sure of that you are using the following function signature (exactly):
+
+   ```c++
+   double computeProduct(const double anArray[], int first, int last)
+   ```
+
+3. To test your work, toggle the `PART_3_COMPLETE` macro to `TRUE` (in the `lab-macros.h` header file) and execute the `lab02-test` target.
+4. Upon completion of this step, stage, commit and push your changes to GitHub.
 
 As a final step, log onto GitHub and make sure that your pull request has all your commits. If it doesn't, make a final commit and/or push your last commit to GitHub. Also, make sure that `professordaehn`, `lakshmidivyavaddineni` and `SunandaGuha` are listed as a Reviewers on your pull request. (It may be that only `professordaehn` is listed; if that is the case, manually add the GA usernames too. While you're at it, assign the pull request to yourself.)
 
@@ -151,11 +131,11 @@ Finally, be sure that you **do not merge your pull request until it has been app
 
 ### Due Date
 
-Your Blackboard submission is due by 23:59 Saturday, 04 September 2021.
+Your Blackboard submission is due by the end of your lab period.
 
 ### Grading Rubric
 
-This assignment is worth **5 points**.
+This assignment is worth **3 points**.
 
 Criteria          | Exceeds Expectations         | Meets Expectations                  | Below Expectations                  | Failure                                                 |
 ------------------|------------------------------|-------------------------------------|-------------------------------------|---------------------------------------------------------|
