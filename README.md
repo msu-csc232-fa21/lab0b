@@ -1,4 +1,4 @@
-# Lab02 - Compiling C++ Programs
+# Lab0b - Compiling C++ Programs
 
 Today's lab is the second (and last) of our non-graded labs. Today we focus on the tools needed to build various targets with our source code. To drive this experience, the student is asked to write three different recursive functions that were discussed in class.
 
