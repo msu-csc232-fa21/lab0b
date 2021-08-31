@@ -16,7 +16,7 @@ Include(FetchContent)
 FetchContent_Declare(
         Catch2
         GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-        GIT_TAG        v2.13.1
+        GIT_TAG        v3.0.0-preview3
 )
 
 FetchContent_MakeAvailable(Catch2)
@@ -25,18 +25,13 @@ add_executable(lab02 ${SRC_MAIN_FILES})
 add_executable(lab02-demo ${SRC_DEMO_FILES})
 add_executable(lab02-tests ${SRC_TEST_FILES})
 
-target_link_libraries(lab02-tests PRIVATE Catch2::Catch2)
+target_link_libraries(lab02-tests PRIVATE Catch2::Catch2WithMain)
 
 target_include_directories(lab02 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories(lab02-demo PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories(lab02-tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-# Setup automatic test registration
-list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/contrib)
-
 include(CTest)
-include(Catch)
-catch_discover_tests(lab02-tests)
 
 # add custom commands that copy data input files to target working directories
 add_custom_command(TARGET lab02 PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/resource/mainData.txt ${CMAKE_CURRENT_BINARY_DIR})

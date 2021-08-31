@@ -2,13 +2,12 @@
  * CSC232 - Data Structures
  * Missouri State University, Fall 2021
  *
- * @file     hw01-test.cpp
+ * @file     test.cpp
  * @authors  Jim Daehn <jdaehn@missouristate.edu>
  * @brief    HW01 Unit test implementation -- DO NOT MODIFY THIS FILE!!!
  */
 
-#define CATCH_CONFIG_MAIN  // Tell Catch to provide a main() - only do this in one cpp file
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include "csc232.h"
 
 #if PART_1_COMPLETE
