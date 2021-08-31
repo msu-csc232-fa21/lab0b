@@ -11,89 +11,232 @@
 #include <catch2/catch.hpp>
 #include "csc232.h"
 
-SCENARIO( "Base case of Ackermann function (m = 0)", "[acker]" )
+#if PART_1_COMPLETE
+SCENARIO( "Part 1", "[part1]")
 {
-    GIVEN( "Initial values of m == 0 and n == 0" )
+    const char original[] = "ABC123";
+
+    // This can be an ofstream as well or any other ostream
+    std::stringstream buffer;
+    // Save cout's buffer here
+    std::streambuf *sbuf = std::cout.rdbuf();
+    // Redirect cout to our stringstream buffer or any other ostream
+    std::cout.rdbuf(buffer.rdbuf());
+    int first;
+    int last;
+
+    GIVEN( "An empty string" )
     {
-        int m{ 0 };
-        int n{ 0 };
+        first = 0;
+        last = -1;
+        REQUIRE( last - first < 0);
 
-        WHEN( "We compute the value of the Ackermann function acker(0, 0)" )
+        WHEN( "we write it backwards" )
         {
-            REQUIRE( m == 0 );
-            REQUIRE( n == 0 );
+            csc232::writeArrayBackward(original, first, last);
 
-            int actual{ csc232::acker( m, n ) };
-            int expected{ 1 };
-
-            THEN( "We obtain the desired result" )
+            THEN( "it is still empty" )
             {
-                REQUIRE( actual == expected );
+                REQUIRE(buffer.str().size() == 0);
+                std::cout.rdbuf(sbuf);
             }
         }
     }
 
-    GIVEN( "Initial value of m == 0 and n == 1" )
+    GIVEN( "A string of length 1" )
     {
-        int m{ 0 };
-        int n{ 1 };
-        
-        WHEN( "We compute the value of the Ackermann function acker(0, 1)" )
+        first = 0;
+        last = 0;
+        REQUIRE( last - first >= 0);
+
+        WHEN( "we write it backwards" )
         {
-            REQUIRE( m == 0 );
-            REQUIRE( n == 1 );
+            csc232::writeArrayBackward(original, first, last);
 
-            int actual{ csc232::acker( m, n ) };
-            int expected{ 2 };
-
-            THEN( "We obtain the desired result" )
+            THEN( "it is same string" )
             {
-                REQUIRE( actual == expected );
+                REQUIRE(buffer.str() == "A");
+                std::cout.rdbuf(sbuf);
             }
         }
     }
 
-    
-    GIVEN( "Initial value of m == 0 and n == 2")
+    GIVEN( "A string of even length" )
     {
-        int m{ 0 };
-        int n{ 2 };
-        
-        WHEN( "We compute the value of the Ackermann function acker( 0, 2)" )
+        first = 0;
+        last = 1;
+        REQUIRE( (last - first + 1) % 2 == 0);
+
+        WHEN( "we write it backwards" )
         {
-            REQUIRE( m == 0 );
-            REQUIRE( n == 2 );
-
-            int actual{ csc232::acker( m, n ) };
-            int expected{ 3 };
-
-            THEN( "We obtain the desired result" )
+            csc232::writeArrayBackward(original, first, last);
+            THEN( "the same even number of characters are reversed" )
             {
-                REQUIRE( actual == expected );
+                REQUIRE(buffer.str() == "BA");
+                std::cout.rdbuf(sbuf);
+            }
+        }
+    }
+
+    GIVEN( "A string of odd length" )
+    {
+        first = 0;
+        last = 2;
+        REQUIRE( (last - first + 1) % 2 == 1);
+
+        WHEN( "we write it backwards" )
+        {
+            csc232::writeArrayBackward(original, 0, 2);
+
+            THEN( "the same odd number of characters are reversed" )
+            {
+                REQUIRE(buffer.str() == "CBA");
+                std::cout.rdbuf(sbuf);
             }
         }
     }
 }
+#endif 
 
-SCENARIO( "Ackermann function computes values given in Exercise 26", "[acker]" )
+#if PART_2_COMPLETE
+SCENARIO( "Part 2", "[part2]" )
 {
-    GIVEN( "The values presented in Exercise 26" )
+    const double data[] = {1.0, 2.0, 3.0, 2.0, 1.0};
+    int n;
+    double result;
+
+    GIVEN( "An array of at least size 1" )
     {
-        int m{ 1 };
-        int n{ 2 };
+        n = 1;
 
-        WHEN( "We compute the value of the Ackermann function aker(1, 2)" )
+        WHEN( "We compute the product of the first element" )
         {
-            REQUIRE( m == 1 );
-            REQUIRE( n == 2 );
+            result = csc232::computeProduct(data, n);
 
-            int actual{ csc232::acker( m, n ) };
-            int expected{ 4 };
-
-            THEN( "We obtain the desired result")
+            THEN( "it is the value of the one element" )
             {
-                REQUIRE( actual == expected );
+                REQUIRE(result == Approx(1.0));
+            }
+        }
+    }
+
+    GIVEN( "An array of at least size 2" )
+    {
+        n = 1;
+
+        WHEN( "We compute the product of the first element" )
+        {
+            result = csc232::computeProduct(data, n);
+
+            THEN( "it is the value of the first element" )
+            {
+                REQUIRE(result == Approx(1.0));
+            }
+        }
+    }
+
+    GIVEN( "An array of at least size 2" )
+    {
+        n = 2; 
+
+        WHEN( "We compute the product of the two elements" )
+        {
+            result = csc232::computeProduct(data, n);
+
+            THEN( "it is the value of the first element times the second element" )
+            {
+                REQUIRE(result == Approx(2.0));
+            }
+        }
+    }
+
+    GIVEN( "An array of at least size 3" )
+    {
+        n = 3;
+
+        WHEN( "We compute the product of the first three elements" )
+        {
+            result = csc232::computeProduct(data, n);
+
+            THEN( "it is the value of the product of all the elements" )
+            {
+                REQUIRE(result == Approx(6.0));
             }
         }
     }
 }
+#endif
+
+#if PART_3_COMPLETE
+SCENARIO( "Part 3", "[part3]" )
+{
+    const double data[] = {1.0, 2.0, 3.0, 2.0, 1.0};
+    int first;
+    int last;
+    double result;
+
+    GIVEN( "An sub-array of the first element" )
+    {
+        first = 0;
+        last = 0;
+
+        WHEN( "We compute the product of the first element" )
+        {
+            result = csc232::computeProduct(data, first, last);
+
+            THEN( "it is the value of the one element" )
+            {
+                REQUIRE(result == Approx(1.0));
+            }
+        }
+    }
+
+    GIVEN( "An sub-array of the second element" )
+    {
+        first = 1;
+        last = 1;
+
+        WHEN( "We compute the product of the first element" )
+        {
+            result = csc232::computeProduct(data, first, last);
+
+            THEN( "it is the value of the one element" )
+            {
+                REQUIRE(result == Approx(2.0));
+            }
+        }
+    }
+
+    GIVEN( "An sub-array of the third element" )
+    {
+        first = 2;
+        last = 2;
+
+        WHEN( "We compute the product of the first element" )
+        {
+            result = csc232::computeProduct(data, first, last);
+
+            THEN( "it is the value of the one element" )
+            {
+                REQUIRE(result == Approx(3.0));
+            }
+        }
+    }
+
+    GIVEN( "An array of at least size 3" )
+    {
+        first = 1;
+        last = 3;
+
+        WHEN( "We compute the product of the first three elements" )
+        {
+            result = csc232::computeProduct(data, first, last);
+
+            THEN( "it is the value of the product of all the elements" )
+            {
+                REQUIRE(result == Approx(12.0));
+            }
+        }
+    }
+}
+#endif
