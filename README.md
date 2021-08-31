@@ -1,18 +1,22 @@
 # Lab02 - Compiling C++ Programs
 
-Brief overview.
+Today's lab is the second (and last) of our non-graded labs. Today we focus on the tools needed to build various targets with our source code. To drive this experience, the student is asked to write three different recursive functions that were discussed in class.
 
 ## Recursion: Processing Arrays
 
-Brief overview.
+In chapter 2, section 2.4, we are introduced to various techniques for processing arrays using recursion. Specifically, we looked at:
+
+* Writing an Array's Entries in Backward Order
+* Writing a recursive function that computes and returns the product of the first n >= 1 real numbers in an array
+* Writing a recursive function that computes and returns the product of the double values in the array `anArray[first..last]`
 
 ## Objectives
 
 In this assignment you
 
-* list
-* of
-* objectives
+* discover (and possibly install) tools used for developing and executing C++ programs
+* gain experience developing recursive functions
+* gain additional experience submitting assignments without penalty
 
 ## Background Reading
 
