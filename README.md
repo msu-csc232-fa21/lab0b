@@ -86,7 +86,7 @@ In Part 1 of this assignment you will implement the `writeArrayBackward` functio
 
 1. In the [include](include) folder, modify the file named `csc232.h`.
 2. When implementing your function, make sure of that you are using the exact identifiers shown in the example code of section 2.4.1 in your textbook. Don't forget to include documentation comments.
-3. To test your work, toggle the `PART_1_COMPLETE` macro to `TRUE` and execute the `lab02-test` target.
+3. To test your work, toggle the `PART_1_COMPLETE` macro to `TRUE` (in the `lab-macros.h` header file) and execute the `lab02-test` target.
 4. Upon completion of this step, stage, commit and push your changes to GitHub.
 
 ### Part 2: Computing the product of the first n real numbers in an array
@@ -100,7 +100,7 @@ In Part 2 of this assignment you will implement the `computeProduct` function pr
    double computeProduct(const double anArray[], int n)
    ```
 
-3. To test your work, toggle the `PART_2_COMPLETE` macro to `TRUE` and execute the `lab02-test` target.
+3. To test your work, toggle the `PART_2_COMPLETE` macro to `TRUE` (in the `lab-macros.h` header file) and execute the `lab02-test` target.
 4. Upon completion of this step, stage, commit and push your changes to GitHub.
 
 ### Part 3: Computing the product of the doubles in the array `anArray[first..last]`
@@ -114,7 +114,7 @@ In Part 3 of this assignment you will implement the `computeProduct` function pr
    double computeProduct(const double anArray[], int first, int last)
    ```
 
-3. To test your work, toggle the `PART_3_COMPLETE` macro to `TRUE` and execute the `lab02-test` target.
+3. To test your work, toggle the `PART_3_COMPLETE` macro to `TRUE` (in the `lab-macros.h` header file) and execute the `lab02-test` target.
 4. Upon completion of this step, stage, commit and push your changes to GitHub.
 
 As a final step, log onto GitHub and make sure that your pull request has all your commits. If it doesn't, make a final commit and/or push your last commit to GitHub. Also, make sure that `professordaehn`, `lakshmidivyavaddineni` and `SunandaGuha` are listed as a Reviewers on your pull request. (It may be that only `professordaehn` is listed; if that is the case, manually add the GA usernames too. While you're at it, assign the pull request to yourself.)

@@ -33,6 +33,7 @@
 #include <utility>
 #include <vector>
 #include "expanded_templates.h"
+#include "lab-macros.h"
 
 /** Common iostream objects */
 using std::cout;
@@ -51,7 +52,24 @@ using std::setprecision;
  */
 namespace csc232
 {
-    // TODO: Implement the Ackermann function within this namespace below
+    // TODO: Implement the writeArrayBackward function within this namespace below
+    //       When you're ready to test it, toggle the PART_1_COMPLETE in lab-macros.h to TRUE
+    //       When you're finished with this part, delete these instruction comments, stage,
+    //       commit and push your changes to GitHub.
+
+
+
+    // TODO: Implement the computeProduct function discussed in Part 2 within this namespace below
+    //       When you're ready to test it, toggle the PART_2_COMPLETE in lab-macros.h to TRUE
+    //       When you're finished with this part, delete these instruction comments, stage,
+    //       commit and push your changes to GitHub.
+
+
+    // TODO: Implement the computeProduct function discussed in Part 3 within this namespace below
+    //       When you're ready to test it, toggle the PART_3_COMPLETE in lab-macros.h to TRUE
+    //       When you're finished with this part, delete these instruction comments, stage,
+    //       commit and push your changes to GitHub.
+
 
     // DO NOT Modify anything below this line
 
